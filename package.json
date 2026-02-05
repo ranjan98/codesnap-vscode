@@ -1,0 +1,81 @@
+{
+  "name": "codesnap",
+  "displayName": "CodeSnap",
+  "description": "Beautiful code screenshots directly from VS Code",
+  "version": "1.0.0",
+  "publisher": "ranjan98",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codesnap.captureSelection",
+        "title": "CodeSnap: Capture Selection"
+      },
+      {
+        "command": "codesnap.captureFile",
+        "title": "CodeSnap: Capture Entire File"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "codesnap.captureSelection",
+          "when": "editorHasSelection",
+          "group": "codesnap@1"
+        },
+        {
+          "command": "codesnap.captureFile",
+          "group": "codesnap@2"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "CodeSnap",
+      "properties": {
+        "codesnap.theme": {
+          "type": "string",
+          "default": "dark",
+          "enum": ["dark", "light", "monokai", "nord", "dracula"],
+          "description": "Screenshot theme"
+        },
+        "codesnap.showLineNumbers": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show line numbers in screenshots"
+        },
+        "codesnap.windowControls": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show macOS-style window controls"
+        },
+        "codesnap.shadow": {
+          "type": "boolean",
+          "default": true,
+          "description": "Add shadow effect"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.3",
+    "@vscode/vsce": "^2.22.0"
+  },
+  "dependencies": {
+    "shiki": "^1.0.0"
+  }
+}
