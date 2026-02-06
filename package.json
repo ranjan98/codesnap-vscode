@@ -76,6 +76,7 @@
     "@vscode/vsce": "^2.22.0"
   },
   "dependencies": {
+    "html2canvas": "^1.4.1",
     "shiki": "^1.0.0"
   }
 }
